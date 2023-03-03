@@ -32,9 +32,14 @@
     </nav>
 
     <h1>Welcome {{request.user.username}}</h1>
+    <h1>Contact form</h1>
+    <form>
+        <input type="name"/>
+        <input type="submit"/>
+
+    </form>
     {% block content %}
     {% endblock content %}
-
 
     <footer>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In atque officia magnam corrupti aut quibusdam,
