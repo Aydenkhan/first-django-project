@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% block title %}Register{% endblock title %}
+{% block content %}
+
+
+
+{% for error in messages %}
+<li>{{error}}</li>
+{% endfor %}
+<form method="post">
+    {% csrf_token %}
+    <label for="">enter user name</label><br> <br>
+    <input type="text" name="username" ><br> <br>
+    <label for="">enter password</label><br> <br>
+    <input type="text" name="password" id=""><br> <br>
+    <label for="">conform passowrd</label><br> <br>
+    <input type="text" name="password2" id=""><br> <br>
+    <input type="submit">
+    <a href="{% url 'login' %}">Login</a>
+
+
+</form>
+
+
+
+
+
+
+
+{% comment %} <form method="post">
+    {% csrf_token %}
+    <label for="">Username:</label> <br> <br>
+    <input type="text" name="username"> <br> <br>
+    <label for="">Password:</label><br><br>
+    <input type="password" name="password"><br><br>
+    <label for="">Confirm Password:</label><br><br>
+    <input type="password" name="password2"><br><br>
+    <input type="submit">
+    <a href="{% url 'login' %}">Login</a>
+</form> {% endcomment %}
+
+
+
+{% endblock content %}

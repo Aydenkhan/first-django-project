@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <style>
+        .b {
+            color: red;
+        }
+    </style>
+
+    {% block css %}
+    <style>
+        .green {
+            color: green;
+        }
+    </style>
+    {% endblock css %}
+</head>
+
+<body>
+    <nav>
+        <li>Home</li>
+        <li class="green">About</li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+    </nav>
+
+    <h1>Welcome {{request.user.username}}</h1>
+    {% block content %}
+    {% endblock content %}
+
+
+    <footer>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In atque officia magnam corrupti aut quibusdam,
+            nulla, facilis accusantium est sit dignissimos quasi dolorem consequatur nisi quod nobis omnis nam rem!</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% block title %}main{% endblock title %}
+{% block css %}
+<style>
+    .green {
+        color: red;
+    }
+</style>
+{% endblock css %}
+{% block content %}
+<h1>Welcome to first django project </h1>
+<ul>
+    {% for name in adil %}
+    <li>{{name.name}}_{{name.father}} {% if request.user == name.user %}
+        <form action="{% url 'delete' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="pk" value="{{name.id}}">
+            <input type="submit" value="delete">
+        </form> <a href="{% url 'update' name.id %}">Update</a>
+    </li>{% endif %}
+    {% endfor %}
+</ul>
+
+<h1>Adil details here </h1>
+<form method="post">
+    {% csrf_token %}
+    <label class="green">Enter first name</label>
+    <input type="text" name="first">
+    <label class="b" for="">last name</label>
+    <input type="text" name="last">
+    <input type="submit">
+</form>
+
+{% endblock content %}
